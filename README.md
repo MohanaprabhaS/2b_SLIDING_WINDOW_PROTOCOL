@@ -14,6 +14,7 @@ To write a python program to perform sliding window protocol.
 ## PROGRAM
 ```
 Client
+
 import socket
 s=socket.socket()
 s.bind(('localhost',8000))
@@ -34,6 +35,7 @@ while True:
             i+=s
             
 Server
+
 import socket
 s=socket.socket()
 s.connect(('localhost',8000))
