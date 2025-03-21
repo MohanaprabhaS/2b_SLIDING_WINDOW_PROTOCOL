@@ -1,5 +1,9 @@
 # 2b IMPLEMENTATION OF SLIDING WINDOW PROTOCOL
+# DEVELOPED BY : Mohanaprabha S
+# REGISTER NO : 212224040197
+# DATE : 20.3.25
 ## AIM
+To write a python program to perform sliding window protocol.
 ## ALGORITHM:
 1. Start the program.
 2. Get the frame size from the user
@@ -8,6 +12,40 @@
 5. If your frames reach the server it will send ACK signal to client
 6. Stop the Program
 ## PROGRAM
+```
+Client
+import socket
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+size=int(input("Enter no of frame to sent: "))
+l=list(range(size))
+s=int(input("Enter Window size: "))
+st=0
+i=0
+while True:
+    while(i<len(l)):
+        st+=s
+        c.send(str(l[i:st]).encode())
+        ack=c.recv(1024).decode()
+        if ack:
+            print(ack)
+            i+=s
+            
+Server
+import socket
+s=socket.socket()
+s.connect(('localhost',8000))
+while True:
+    print(s.recv(1024).decode())
+    s.send("Acknowledgement Received from the server".encode())
+```
+
+
 ## OUPUT
+
+![Screenshot 2025-03-21 101644](https://github.com/user-attachments/assets/73851fcf-3e08-493c-b433-21a6eecaa585)
+
 ## RESULT
 Thus, python program to perform stop and wait protocol was successfully executed
